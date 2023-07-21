@@ -6,6 +6,18 @@ return {
     },
   },
   {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "gopls",
+        "goimports",
+        "impl",
+        "delve",
+        "go-debug-adapter",
+      },
+    },
+  },
+  {
     "jose-elias-alvarez/null-ls.nvim",
     opts = function()
       local nls = require("null-ls")
