@@ -3,3 +3,5 @@
 -- Add any additional options here
 
 vim.o.scrolloff = 8
+vim.o.foldmethod = "indent"
+vim.o.foldlevelstart = 99

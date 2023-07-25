@@ -18,6 +18,7 @@ return {
         "yaml",
         "go",
         "kotlin",
+        "graphql",
       },
     },
   },
