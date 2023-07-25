@@ -29,6 +29,7 @@ return {
           nls.builtins.formatting.stylua,
           nls.builtins.formatting.shfmt,
           nls.builtins.formatting.goimports,
+          nls.builtins.formatting.prettier,
           -- nls.builtins.diagnostics.flake8,
         },
       }

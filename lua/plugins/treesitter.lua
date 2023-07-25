@@ -5,6 +5,8 @@ return {
       ensure_installed = {
         "bash",
         "html",
+        "svelte",
+        "css",
         "javascript",
         "json",
         "lua",
