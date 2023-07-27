@@ -5,3 +5,5 @@
 vim.o.scrolloff = 8
 vim.o.foldmethod = "indent"
 vim.o.foldlevelstart = 99
+vim.o.shiftwidth = 4
+vim.o.tabstop = 4
