@@ -35,6 +35,7 @@ return {
                     nls.builtins.formatting.shfmt,
                     nls.builtins.formatting.goimports,
                     nls.builtins.formatting.prettier,
+                    nls.builtins.formatting.buf,
                     -- nls.builtins.diagnostics.flake8,
                 },
             }
