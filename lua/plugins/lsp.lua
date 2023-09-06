@@ -96,6 +96,17 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         opts = {
+            pickers = {
+                lsp_document_symbols = {
+                    symbol_width = 50,
+                },
+                lsp_implementations = {
+                    fname_width = 50,
+                },
+                lsp_references = {
+                    fname_width = 50,
+                },
+            },
             defaults = {
                 layout_config = {
                     height = 0.95,
