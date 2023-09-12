@@ -100,6 +100,9 @@ return {
                 lsp_document_symbols = {
                     symbol_width = 50,
                 },
+                lsp_workspace_symbols = {
+                    symbol_width = 50,
+                },
                 lsp_implementations = {
                     fname_width = 50,
                 },
