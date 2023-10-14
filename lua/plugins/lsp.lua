@@ -1,11 +1,5 @@
 return {
     {
-        "neovim/nvim-lspconfig",
-        opts = {
-            autoformat = true,
-        },
-    },
-    {
         "williamboman/mason.nvim",
         opts = {
             ensure_installed = {
