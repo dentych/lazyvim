@@ -7,6 +7,7 @@ return {
                 hl.LineNr = { fg = c.green }
                 hl.CursorLineNr = { fg = c.orange }
                 hl.Comment = { fg = "#cccccc" }
+                hl.WinSeparator = { fg = "#cccccc" }
             end,
         },
     },
