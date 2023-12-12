@@ -96,6 +96,7 @@ return {
                     settings = {
                         gopls = {
                             buildFlags = { "-tags=integration" },
+                            usePlaceholders = false,
                         },
                     },
                 },
