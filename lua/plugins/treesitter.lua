@@ -1,30 +1,11 @@
 return {
-    {
-        "nvim-treesitter/nvim-treesitter",
-        opts = {
-            ensure_installed = {
-                "bash",
-                "html",
-                "svelte",
-                "css",
-                "javascript",
-                "json",
-                "lua",
-                "markdown",
-                "markdown_inline",
-                "python",
-                "regex",
-                "tsx",
-                "typescript",
-                "vim",
-                "yaml",
-                "go",
-                "gomod",
-                "gosum",
-                "gowork",
-                "kotlin",
-                "graphql",
-            },
-        },
-    },
+	"nvim-treesitter/nvim-treesitter",
+	build = ":TSUpdate",
+	opts = {
+		highlight = { enable = true },
+		indent = { enable = true },
+		ensure_installed = {
+			"go",
+		},
+	},
 }
