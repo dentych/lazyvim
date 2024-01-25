@@ -1,8 +1,11 @@
 return {
-	{ 
+	{
 		"williamboman/mason.nvim",
+        keys = {
+            { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" },
+        }
 	},
-	{ 
+	{
 		"williamboman/mason-lspconfig.nvim",
 		lazy = false,
 		config = function(_, opts)
@@ -49,7 +52,7 @@ return {
 				vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
 				vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts, {desc = "Bla blu"})
 				vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-				vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+				vim.keymap.set({'n', 'i'}, '<C-k>', vim.lsp.buf.signature_help, opts)
 				vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
 				vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
 				vim.keymap.set('n', '<space>wl', function()

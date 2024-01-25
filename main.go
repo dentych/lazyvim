@@ -3,11 +3,9 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Hello, world!")
-	bla()
+    fmt.Println(fullName("Dennis", "Tychsen"))
 }
 
-// bla is a great function
-func bla() {
-	fmt.Println("Hehe")
+func fullName(first, last string) string {
+    return fmt.Sprintf("%s %s", first, last)
 }
