@@ -6,6 +6,11 @@ return {
 		indent = { enable = true },
 		ensure_installed = {
 			"go",
+			"lua",
+			"vimdoc",
 		},
 	},
+	config = function(_, opts)
+		require("nvim-treesitter.configs").setup(opts)
+	end,
 }

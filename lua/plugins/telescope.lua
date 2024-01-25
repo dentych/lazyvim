@@ -11,9 +11,19 @@ end
 return {
 	'nvim-telescope/telescope.nvim', tag = '0.1.5',
 	dependencies = { 'nvim-lua/plenary.nvim' },
+	opts = {
+		pickers = {
+			git_files = {
+				show_untracked = true,
+			},
+		},
+	},
 	keys = {
+		-- find
 		{ "<leader><space>", git_or_find_files, desc = "Find files" },
 		{ "<leader>ff", git_or_find_files, desc = "Find files" },
 		{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find buffers" },
+		-- search
+		{ "<leader>sg", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
 	},
 }
