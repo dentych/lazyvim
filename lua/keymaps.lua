@@ -5,3 +5,4 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", {desc = "Go to right window", remap = tru
 vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", {desc = "Open Lazy"})
 vim.keymap.set("n", "<C-w>c", "<cmd>ccl<cr>", { desc = "Close quickfix window" })
 
+vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>", { desc = "LazyGit" } )

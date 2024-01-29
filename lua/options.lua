@@ -13,3 +13,13 @@ opt.scrolloff = 8
 opt.shiftwidth = 4
 opt.smartindent = true
 opt.tabstop = 4
+opt.undofile = true
+opt.undolevels = 10000
+
+-- Highlight on yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})
