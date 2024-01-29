@@ -26,6 +26,7 @@ return {
             position = "left",
 			mappings = {
 				["<space>"] = "none",
+                ["w"] = "none",
 			},
 		},
 	},
