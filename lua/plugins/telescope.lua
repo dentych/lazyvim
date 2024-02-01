@@ -26,6 +26,6 @@ return {
 		-- search
 		{ "<leader>sg", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
         { "<leader>ss", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Search for symbols (Document)"},
-        { "<leader>sS", "<cmd>Telescope lsp_workspace_symbols<cr>", desc = "Search for symbols (Document)"},
+        { "<leader>sS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Search for symbols (Workspace)"},
 	},
 }
