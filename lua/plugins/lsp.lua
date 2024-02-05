@@ -7,10 +7,18 @@ return {
     },
     {
         "williamboman/mason-lspconfig.nvim",
+    },
+    {
+        "neovim/nvim-lspconfig",
+        event = "VimEnter",
+        dependencies = {
+            "mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+        },
         config = function(_, opts)
-            require("mason").setup()
-            require("mason-lspconfig").setup()
-
+            -- setup lagnuage server stuff
+            require("mason").setup(opts)
+            require("mason-lspconfig").setup(opts)
             require("mason-lspconfig").setup_handlers {
                 -- The first entry (without a key) will be the default handler
                 -- and will be called for each installed server that doesn't have
@@ -22,19 +30,20 @@ return {
                 -- For example, a handler override for the `rust_analyzer`:
                 ["rust_analyzer"] = function()
                     require("rust-tools").setup {}
+                end,
+                ["gopls"] = function()
+                    require("lspconfig").gopls.setup({
+                        settings = {
+                            gopls = {
+                                buildFlags = {"-tags=integration"},
+                            }
+                        }
+                    })
                 end
             }
-        end
-    },
-    {
-        "neovim/nvim-lspconfig",
-        event = "VimEnter",
-        dependencies = {
-            "mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
-        },
-        config = function()
 
+
+            -- setup keys
             local builtin = require("telescope.builtin")
             -- Global mappings.
             -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -55,7 +64,8 @@ return {
                     -- Buffer local mappings.
                     -- See `:help vim.lsp.*` for documentation on any of the below functions
                     local opts = { buffer = ev.buf }
-                    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, require("util").merge(opts, { desc = "Go to declaration" }))
+                    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration,
+                        require("util").merge(opts, { desc = "Go to declaration" }))
                     vim.keymap.set('n', 'gd', function() builtin.lsp_definitions() end, { desc = "Go to definition" })
                     vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "Show hover" })
                     vim.keymap.set('n', 'gi', function() builtin.lsp_implementations() end,
