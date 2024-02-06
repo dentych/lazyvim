@@ -22,6 +22,7 @@ return {
 		-- find
 		{ "<leader><space>", git_or_find_files, desc = "Find files" },
 		{ "<leader>ff", git_or_find_files, desc = "Find files" },
+		{ "<leader>fa", function() require("telescope.builtin").find_files({no_ignore=true}) end, desc = "Find files (do not respect .gitignore)" },
 		{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find buffers" },
 		-- search
 		{ "<leader>sg", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
