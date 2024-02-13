@@ -3,6 +3,7 @@ vim.g.mapleader = " "
 local opt = vim.opt
 
 opt.autowrite = true
+opt.clipboard = "unnamedplus"
 opt.confirm = true -- confirm to save if exiting modified buffer
 opt.expandtab = true
 opt.foldlevelstart = 99

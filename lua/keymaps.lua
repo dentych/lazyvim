@@ -14,3 +14,5 @@ vim.keymap.set("n", "<C-w>c", "<cmd>ccl<cr>", { desc = "Close quickfix window" }
 vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>", { desc = "LazyGit" } )
 
 vim.keymap.set("n", "<leader>bd", "<cmd>bd<cr>", { desc = "Delete buffer" })
+
+vim.keymap.set("n", "<esc>", "<cmd>noh<cr>", { desc = "Remove highlighting" })
