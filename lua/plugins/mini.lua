@@ -1,6 +1,7 @@
 return {
     { 
         'echasnovski/mini.nvim', version = '*',
+        event = "VimEnter",
         config = function()
             require("mini.surround").setup()
             require("mini.pairs").setup()
@@ -8,6 +9,7 @@ return {
             require("mini.bufremove").setup()
             require("mini.ai").setup()
             require("mini.indentscope").setup()
+            require("mini.starter").setup()
         end,
     },
 }

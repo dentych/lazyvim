@@ -1,6 +1,6 @@
 return {
     "nvim-neo-tree/neo-tree.nvim",
-    event = "VimEnter",
+    event = "BufEnter",
     branch = "v3.x",
     cmd = "Neotree",
     dependencies = {
