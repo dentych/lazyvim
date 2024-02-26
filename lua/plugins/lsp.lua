@@ -3,7 +3,8 @@ return {
         "williamboman/mason.nvim",
         keys = {
             { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" },
-        }
+        },
+
     },
     {
         "williamboman/mason-lspconfig.nvim",
@@ -12,36 +13,46 @@ return {
         "neovim/nvim-lspconfig",
         event = "VimEnter",
         dependencies = {
-            "mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim"
         },
         config = function(_, opts)
-            -- setup lagnuage server stuff
-            require("mason").setup(opts)
-            require("mason-lspconfig").setup(opts)
+            require("mason").setup()
+            require("mason-lspconfig").setup()
+
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
             require("mason-lspconfig").setup_handlers {
-                -- The first entry (without a key) will be the default handler
-                -- and will be called for each installed server that doesn't have
-                -- a dedicated handler.
-                function(server_name) -- default handler (optional)
-                    require("lspconfig")[server_name].setup {}
-                end,
-                -- Next, you can provide a dedicated handler for specific servers.
-                -- For example, a handler override for the `rust_analyzer`:
-                ["rust_analyzer"] = function()
-                    require("rust-tools").setup {}
+                function(server_name)
+                    require("lspconfig")[server_name].setup {
+                        -- on_attach = on_attach,
+                        capabilities = capabilities,
+                    }
                 end,
                 ["gopls"] = function()
-                    require("lspconfig").gopls.setup({
+                    require("lspconfig").gopls.setup {
                         settings = {
                             gopls = {
-                                buildFlags = {"-tags=integration"},
+                                buildFlags = { "-tags=integration" },
+                                hints = {
+                                    assignVariableTypes = true,
+                                    compositeLiteralFields = true,
+                                    compositeLiteralTypes = true,
+                                    constantValues = true,
+                                    functionTypeParameters = true,
+                                    parameterNames = true,
+                                    rangeVariableTypes = true,
+                                },
+                                completeUnimported = true,
+                                analyses = {
+                                    unusedParams = true,
+                                },
+                                usePlaceholders = true,
                             }
                         }
-                    })
+                    }
                 end
             }
-
 
             -- setup keys
             local builtin = require("telescope.builtin")
@@ -58,14 +69,14 @@ return {
                 group = vim.api.nvim_create_augroup('UserLspConfig', {}),
                 callback = function(ev)
                     -- Enable completion triggered by <c-x><c-o>
-                    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+                    -- vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
                     local util = require("util")
                     -- Buffer local mappings.
                     -- See `:help vim.lsp.*` for documentation on any of the below functions
                     local opts = { buffer = ev.buf }
                     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration,
-                        require("util").merge(opts, { desc = "Go to declaration" }))
+                        util.merge(opts, { desc = "Go to declaration" }))
                     vim.keymap.set('n', 'gd', function() builtin.lsp_definitions() end, { desc = "Go to definition" })
                     vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "Show hover" })
                     vim.keymap.set('n', 'gi', function() builtin.lsp_implementations() end,
