@@ -31,6 +31,7 @@ return {
                 end,
                 ["gopls"] = function()
                     require("lspconfig").gopls.setup {
+                        capabilities = capabilities,
                         settings = {
                             gopls = {
                                 buildFlags = { "-tags=integration" },
@@ -47,7 +48,7 @@ return {
                                 analyses = {
                                     unusedParams = true,
                                 },
-                                usePlaceholders = true,
+                                usePlaceholders = false,
                             }
                         }
                     }
