@@ -8,6 +8,12 @@ function git_or_find_files()
 	end
 end
 
+-- Live grep search in file's current directory
+-- Todo: Make it possible to hover over a directory in neo-tree and live grep in that directory
+function liveGrepCurrentFileDir()
+    require("telescope.builtin").live_grep({search_dirs = { vim.api.nvim_buf_get_name(0):match("(.*/)") }})
+end
+
 return {
 	'nvim-telescope/telescope.nvim', tag = '0.1.5',
 	dependencies = { 'nvim-lua/plenary.nvim' },
@@ -28,5 +34,6 @@ return {
 		{ "<leader>sg", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
         { "<leader>ss", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Search for symbols (Document)"},
         { "<leader>sS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Search for symbols (Workspace)"},
+        { "<leader>sG", liveGrepCurrentFileDir, desc = "Live grep search in file's current directory" },
 	},
 }

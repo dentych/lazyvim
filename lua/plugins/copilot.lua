@@ -7,5 +7,9 @@ return {
         { "<C-l>", "<Plug>(copilot-accept-line)", mode = "i"},
         { "<C-e>", "<Plug>(copilot-next)", mode = "i"},
         { "<C-q>", "<Plug>(copilot-previous)", mode = "i"},
+        { "<C-j>", 'copilot#Accept("\\<CR>")', mode = 'i', expr = true, replace_keycodes = false },
     },
+    config = function()
+        vim.g.copilot_no_tab_map = true
+    end,
 }
