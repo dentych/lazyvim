@@ -59,10 +59,10 @@ return {
             local builtin = require("telescope.builtin")
             -- Global mappings.
             -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-            vim.keymap.set('n', '<space>df', vim.diagnostic.open_float)
-            vim.keymap.set('n', '[e', vim.diagnostic.goto_prev)
-            vim.keymap.set('n', ']e', vim.diagnostic.goto_next)
-            vim.keymap.set('n', '<space>dl', vim.diagnostic.setloclist)
+            vim.keymap.set('n', '<space>xf', vim.diagnostic.open_float, { desc = "Open diagnostic float" })
+            vim.keymap.set('n', '[e', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
+            vim.keymap.set('n', ']e', vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+            vim.keymap.set('n', '<space>xl', vim.diagnostic.setloclist, { desc = "Set loclist" })
 
             -- Use LspAttach autocommand to only map the following keys
             -- after the language server attaches to the current buffer
