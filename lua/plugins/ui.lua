@@ -49,4 +49,24 @@ return {
             })
         end,
     },
+    -- noice for cmdline, notifications and stuff
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- there are multiple plugins handling signature help. Disable noice's version here (I'm not sure which plugin does the handling now :D)
+            lsp = {
+                signature = {
+                    enabled = false,
+                },
+            },
+        },
+        keys = {
+            { "<S-Enter>",   function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c",                 desc = "Redirect Cmdline" },
+            { "<leader>nl", function() require("noice").cmd("last") end,                   desc = "Noice Last Message" },
+            { "<leader>nh", function() require("noice").cmd("history") end,                desc = "Noice History" },
+            { "<leader>na", function() require("noice").cmd("all") end,                    desc = "Noice All" },
+            { "<leader>nd", function() require("noice").cmd("dismiss") end,                desc = "Dismiss All" },
+        }
+    }
 }
